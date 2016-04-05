@@ -12,6 +12,7 @@
     "canduit": "~1.1.2",
     "qs": "~6.1.0",
     "botkit": "0.0.15",
-    "deepcopy": "~0.6.1"
+    "deepcopy": "~0.6.1",
+    "disparity": "~2.0.0"
   }
 }
