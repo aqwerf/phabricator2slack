@@ -1,19 +1,36 @@
 var Botkit = require('botkit');
 
-var controller = Botkit.slackbot({})
+exports.testConnectSlack = function(test) {
+    test.expect(3);
 
-var bot = controller.spawn({
-    token: 'xoxb-31747961591-iWFynF7Vm9qNeAcHRkxEIGcN'
-}).startRTM();
+    var controller = Botkit.slackbot({})
+    var bot = controller.spawn({
+	token: 'xoxb-31747961591-iWFynF7Vm9qNeAcHRkxEIGcN'
+    }).startRTM();
+    test.ok(bot);
+    console.log('Start RTM');
 
-
-controller.on('rtm_open', function(bot, message) {
-//    bot.startConversation(message, function(err,convo) {
+    controller.on('rtm_open', function(bot, message) {
 	bot.say({
-	    text: 'my first message',
-	    username: 'phabot',
-	    channel: '#phabricator'
+	    text: 'testing test-botkit.js',
+	    username: 'nodeunit',
+	    channel: '@alan'
+	}, function(err, response) {
+	    test.ifError(err, 'Fail to DM');
+	    test.deepEqual(response.ok, true, 'Fail to response.ok result');
+	    console.log(response);
+	    test.done();
 	});
-//    })
-});
+    });
 
+    controller.on('rtm_close', function(bot, message) {
+	console.log("rtm_close");
+	test.ok(null, 'Slack chennel is disconnected');
+	test.done();
+    });
+}
+
+exports.tearDown = function(done) {
+    setTimeout(process.exit, 0);
+    done();
+}
