@@ -38,6 +38,18 @@ module.exports = {
 			});
     },
 
+    testConvFileLink: function(test) {
+	var t = 'Test Link {F11056} {F11058}, {F11056}';
+	var res = 'Test Link <https://phabricator.healcerion.com/F11056|human-1array-6cm-cyst.jpg> <https://phabricator.healcerion.com/F11058|human-2array-6cm-cyst.jpg>, <https://phabricator.healcerion.com/F11056|human-1array-6cm-cyst.jpg>';
+	test.expect(2);
+	pha.convFileLinks(t, function(err, text) {
+	    test.ifError(err);
+	    if (!err)
+		test.deepEqual(text, res);
+	    test.done();
+	});
+    },
+
     testResolveUserIDs: function(test) {
 	test.expect(14);
 	async.waterfall([
