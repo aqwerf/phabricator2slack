@@ -148,6 +148,28 @@ module.exports = {
 	});
     },
 
+    testTaskResolveWithoutComment: function(test) {
+	var t = {
+	    storyID: '183742',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-TASK-yxlc3tean6ptljl2nne4',
+		transactionPHIDs: {
+		    'PHID-XACT-TASK-qcjqyvikmxzrq7c': 'PHID-XACT-TASK-qcjqyvikmxzrq7c'
+		}
+	    },
+	    storyAuthorPHID: 'PHID-USER-swl7j67cbd3mobrp7k5l',
+	    storyText: 'alan closed T1113: Phabricator Test  as "Resolved".',
+	    epoch: '1460354883'
+	};
+	test.expect(2);
+	pha.convSlack(t, function(err, msg) {
+	    console.log(msg);
+	    test.ifError(err);
+	    test.ok(msg && msg.attachments[0].text.length > 0);
+	    test.done();
+	});
+    },
     testWikiComment: function(test) {
 	var t = {
 	    storyID: '183679',
