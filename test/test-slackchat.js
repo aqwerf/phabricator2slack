@@ -131,7 +131,7 @@ module.exports = {
 	    test: true
     	}, function (err, count, msg) {
 	    test.ifError(err);
-	    test.ok(count == 3, "Count must be 3, but " + count);
+	    test.ok(count == 1, "Count must be 1, but " + count);
     	    test.done();
     	});
     },
@@ -163,7 +163,7 @@ module.exports = {
 	    test: true
     	}, function (err, count, msg) {
 	    test.ifError(err);
-	    test.ok(count == 5, "Count must be 3, but " + count);
+	    test.ok(count == 5, "Count must be 5, but " + count);
     	    test.done();
     	});
     },
