@@ -46,5 +46,27 @@ module.exports = {
 	    test.done();
 	});
     },
+
+    testWikiComment: function(test) {
+	var t = {
+	    storyID: '183679',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-WIKI-bnym7bd7qrjsv7gr5eyp',
+		transactionPHIDs: {
+		    'PHID-XACT-WIKI-hh2sfkzbv4tbdzu': 'PHID-XACT-WIKI-hh2sfkzbv4tbdzu'
+		}
+	    },
+	    storyAuthorPHID: 'PHID-USER-swl7j67cbd3mobrp7k5l',
+	    storyText: 'alan edited the content of IRM PACS ',
+	    ' EMR 연동 프로젝트.': '',
+	    epoch: '1460099853'
+	};
+	test.expect(1);
+	p2s.notify(t, true, function(err, msg) {
+	    test.ifError(err);
+	    test.done();
+	});
+    }
 }
 

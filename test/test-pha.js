@@ -126,25 +126,50 @@ module.exports = {
     },
 
     testTaskCreate: function(test) {
-	var t = { storyID: '183707',
-		  storyType: 'PhabricatorApplicationTransactionFeedStory',
-		  storyData: {
-		      objectPHID: 'PHID-TASK-olmyj7vgqa43tv22thdh',
-		      transactionPHIDs: {
-			  'PHID-XACT-TASK-qt42lkqozmdvdg3': 'PHID-XACT-TASK-qt42lkqozmdvdg3'
-		      }
-		  },
-		  storyAuthorPHID: 'PHID-USER-effp43w4k64jmqjzzhvx',
-		  storyText: 'james created T1128: [FPGA]linear steer 동작시 ADC 8묶음 오차 발생.',
-		  epoch: '1460120986'
-		};
+	var t = {
+	    storyID: '183707',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-TASK-olmyj7vgqa43tv22thdh',
+		transactionPHIDs: {
+		    'PHID-XACT-TASK-qt42lkqozmdvdg3': 'PHID-XACT-TASK-qt42lkqozmdvdg3'
+		}
+	    },
+	    storyAuthorPHID: 'PHID-USER-effp43w4k64jmqjzzhvx',
+	    storyText: 'james created T1128: [FPGA]linear steer 동작시 ADC 8묶음 오차 발생.',
+	    epoch: '1460120986'
+	};
 	test.expect(2);
-	pha.convSlackTask(t, function(err, msg) {
+	pha.convSlack(t, function(err, msg) {
 	    console.log(msg);
 	    test.ifError(err);
 	    test.ok(msg.attachments[0].text.length > 0);
 	    test.done();
 	});
     },
+
+    testWikiComment: function(test) {
+	var t = {
+	    storyID: '183679',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-WIKI-bnym7bd7qrjsv7gr5eyp',
+		transactionPHIDs: {
+		    'PHID-XACT-WIKI-hh2sfkzbv4tbdzu': 'PHID-XACT-WIKI-hh2sfkzbv4tbdzu'
+		}
+	    },
+	    storyAuthorPHID: 'PHID-USER-swl7j67cbd3mobrp7k5l',
+	    storyText: 'alan edited the content of IRM PACS ',
+	    ' EMR 연동 프로젝트.': '',
+	    epoch: '1460099853'
+	};
+	test.expect(2);
+	pha.convSlack(t, function(err, msg) {
+	    console.log(msg);
+	    test.ifError(err);
+	    test.ok(msg.attachments[0].text.length > 0);
+	    test.done();
+	});	    
+    }
 }
 
