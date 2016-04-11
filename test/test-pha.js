@@ -204,6 +204,28 @@ module.exports = {
 	    test.ok(msg.attachments[0].text.length > 0);
 	    test.done();
 	});	    
-    }
+    },
+    testGit: function(test) {
+	var t = {
+	    storyID: '183835',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-CMIT-h3bw3jxue3iussicrhk2',
+		transactionPHIDs: {
+		    'PHID-XACT-CMIT-x27rb2rexlwh4k2': 'PHID-XACT-CMIT-x27rb2rexlwh4k2'
+		},
+	    },
+	    storyAuthorPHID: 'PHID-USER-swl7j67cbd3mobrp7k5l',
+	    storyText: 'alan committed rPS927f4842fe8a: slackchat: fix log for DM (authored by alan).',
+	    epoch: '1460366072'
+	};
+	test.expect(2);
+	pha.convSlack(t, function(err, msg) {
+	    console.log(msg);
+	    test.ifError(err);
+	    test.ok(msg);
+	    test.done();
+	});
+    },
 }
 
