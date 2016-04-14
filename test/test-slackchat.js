@@ -158,7 +158,7 @@ module.exports = {
     	    text: 'testPreSend',
     	    username: 'alan',
     	    channel: '@alan',
-	    dm: [ '@alan', '@james' ],
+	    dm: [ '@lyle', '@chris' ],
 	    attachments: [ { text: 'test @alan, @james' } ],
 	    test: true
     	}, function (err, count, msg) {
