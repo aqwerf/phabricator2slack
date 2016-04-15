@@ -182,6 +182,28 @@ module.exports = {
 	    test.done();
 	});
     },
+    testWikiCreate: function(test) {
+	var t = {
+	    storyID: '184026',
+	    storyType: 'PhabricatorApplicationTransactionFeedStory',
+	    storyData: {
+		objectPHID: 'PHID-WIKI-3rfae37usqiuyuqil5kj',
+		transactionPHIDs: {
+		    'PHID-XACT-WIKI-tnqyldpz535kgy7': 'PHID-XACT-WIKI-tnqyldpz535kgy7'
+		}
+	    },
+	    storyAuthorPHID: 'PHID-USER-q34dlhgz57utm7ctul34',
+	    storyText: 'daniel created Sector Scan 알고리즘 개발 및 시뮬레이션.',
+	    epoch: '1460688427'
+	};
+	test.expect(2);
+	pha.convSlack(t, function(err, msg) {
+	    console.log(msg);
+	    test.ifError(err);
+	    test.ok(msg.attachments[0].text.length > 0);
+	    test.done();
+	});
+    },
     testWikiComment: function(test) {
 	var t = {
 	    storyID: '183679',
