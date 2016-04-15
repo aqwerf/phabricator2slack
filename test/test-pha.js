@@ -229,17 +229,17 @@ module.exports = {
     },
     testGit: function(test) {
 	var t = {
-	    storyID: '183835',
+	    storyID: '184132',
 	    storyType: 'PhabricatorApplicationTransactionFeedStory',
 	    storyData: {
-		objectPHID: 'PHID-CMIT-h3bw3jxue3iussicrhk2',
+		objectPHID: 'PHID-CMIT-6vlliakk2b32kmpoznf2',
 		transactionPHIDs: {
-		    'PHID-XACT-CMIT-x27rb2rexlwh4k2': 'PHID-XACT-CMIT-x27rb2rexlwh4k2'
+		    'PHID-XACT-CMIT-vq24hdsqiaoetaj': 'PHID-XACT-CMIT-vq24hdsqiaoetaj'
 		},
 	    },
-	    storyAuthorPHID: 'PHID-USER-swl7j67cbd3mobrp7k5l',
-	    storyText: 'alan committed rPS927f4842fe8a: slackchat: fix log for DM (authored by alan).',
-	    epoch: '1460366072'
+	    storyAuthorPHID: 'PHID-USER-w6twhpw6zcyux52mywqa',
+	    storyText: 'chris committed rHIe7b8607b6e37: T1191: [iOS] Image Option 중 가로 슬라이드의 조작 편의성 개선 (authored by chris).',
+	    epoch: '1460722618'
 	};
 	test.expect(2);
 	pha.convSlack(t, function(err, msg) {
@@ -250,4 +250,3 @@ module.exports = {
 	});
     },
 }
-
