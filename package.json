@@ -1,0 +1,22 @@
+{
+  "name": "phabricator-to-slack",
+  "version": "0.1.0",
+  "description": "Phabricator to Slack Interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "node unit test"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "botkit": "0.0.15",
+    "canduit": "~1.1.2",
+    "deepcopy": "~0.6.1",
+    "disparity": "~2.0.0",
+    "q": "^1.4.1",
+    "qs": "~6.1.0",
+    "underscore": "^1.8.3",
+    "winston": "^2.2.0"
+  }
+}

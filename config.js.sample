@@ -1,0 +1,25 @@
+module.exports = {
+    phabricator: {
+        // Base url of your Phabricator server
+	base: 'https://phabricator.yourhost.com/',
+
+	// Conduit API token
+	// Generated it in https://phabricator.yourhost.com/settings/panel/apitokens/
+	token: 'api-blabla',
+    },
+
+    slack: {
+    	// Slack Bot User API
+	// Generated it in https://my.slack.com/services/new/bot
+	token: 'xoxb-blabla-blabla',
+
+	// if true, send DM message for commented user in text message
+	maniphestDM: true,
+
+	maniphestChannel: '#phabricator',
+	phrictionChannel: '#phabricator',
+	diffusionChannel: '#git',
+	defaultChannel: '#git'
+    }
+
+};
