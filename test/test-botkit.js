@@ -1,11 +1,12 @@
 var Botkit = require('botkit');
+const config = require('../config.js');
 
 exports.testConnectSlack = function(test) {
     test.expect(3);
 
     var controller = Botkit.slackbot({})
     var bot = controller.spawn({
-	token: 'xoxb-31747961591-iWFynF7Vm9qNeAcHRkxEIGcN'
+	token: config.slack.token
     }).startRTM();
     test.ok(bot);
     console.log('Start RTM');
