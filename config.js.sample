@@ -13,6 +13,9 @@ module.exports = {
 	// Generated it in https://my.slack.com/services/new/bot
 	token: 'xoxb-blabla-blabla',
 
+	// project notification (phabricator 'CS' to slack maniphestChannel + name (#phbricator-CS)
+	projectChannels: ['CS']
+
 	// if true, send DM message for commented user in text message
 	maniphestDM: true,
 
