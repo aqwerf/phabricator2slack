@@ -50,6 +50,59 @@ module.exports = {
 	});
     },
 
+    testResolveProjectIDs: function(test) {
+	test.expect(10);
+	async.waterfall([
+	    // no project
+	    function(callback) {
+		let ids = [];
+		pha.convProjectNames(ids,
+				     function(err, list) {
+					 test.ifError(err);
+					 test.ok(list.length == 0);
+					 callback(null, ids);
+				     });
+	    },
+	    // 1 project
+	    function(ids, callback) {
+		ids = ['PHID-PROJ-42bb265e7hbdj4dxzp6c']; // marketing-reports
+		pha.convProjectNames(ids,
+				     function(err, list) {
+					 test.ifError(err);
+					 test.ok(list.length == 1);
+					 test.deepEqual(list, ['marketing-reports']);
+					 callback(null, ids);
+				     });
+	    },
+	    // bad project
+	    function(ids, callback) {
+		ids = ['PHID-PROJ-42bb265e7hbdj4dxxxxx']; // marketing-reports
+		pha.convProjectNames(ids,
+				     function(err, list) {
+					 test.ifError(err);
+					 test.ok(list.length == 0);
+					 callback(null, ids);
+				     });
+	    },
+	    // 3 projects
+	    function(ids, callback) {
+		ids = ['PHID-PROJ-42bb265e7hbdj4dxzp6c',
+			   'PHID-PROJ-hrkuzs2equzzjqzptuib',
+			   'PHID-PROJ-vqa5phedoos4et3ajj2t'];
+		pha.convProjectNames(ids,
+				     function(err, list) {
+					 test.ifError(err);
+					 test.ok(list.length == 3);
+					 test.deepEqual(list, ['marketing-reports',
+							       'S300C-Firmware', 'sprint-201604']);
+					 callback(null, ids);
+				     });
+	    },
+	], function(err, ids) {
+	    test.done();
+	});
+    },
+
     testResolveUserIDs: function(test) {
 	test.expect(14);
 	async.waterfall([
